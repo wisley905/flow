@@ -5,12 +5,12 @@
 #include <string.h>
 #include <ctype.h>
 
-// Protótipos das funções dos jogos
+// funções dos jogos
 void jogoPerguntasRespostas();
 void jogoCobraNaCaixa();
 void jogoGousmasWar();
 
-// Função para exibir o menu principal
+// Função do menu principal
 int exibirMenuPrincipal() {
     int escolha;
     system("cls || clear");
@@ -29,7 +29,7 @@ int exibirMenuPrincipal() {
 
 // Função principal
 int main() {
-    srand(time(NULL)); // Inicializa o gerador de números aleatórios
+    srand(time(NULL)); // ele meio que gera os numeros aleatorios
     
     int opcao;
     do {
@@ -63,12 +63,12 @@ int main() {
     return 0;
 }
 
-// Implementação do Jogo de Perguntas e Respostas
+// Jogo de Perguntas e Respostas
 void jogoPerguntasRespostas() {
     system("cls || clear");
     printf("\n=== Jogo de Perguntas e Respostas ===\n\n");
     
-    // Função para exibir o menu e obter a escolha do usuário
+    // Função que exibi o menu e obtem a escolha do jogador
     int menu() {
         int escolha;
         printf("\n--- Jogo de Perguntas e Respostas ---\n");
@@ -79,7 +79,7 @@ void jogoPerguntasRespostas() {
         return escolha;
     }
 
-    // Função para exibir uma pergunta e obter a resposta do usuário
+    // Função de pergunta e armazenamento de resposta 
     int fazerPergunta(const char *pergunta, const char *opcoes[], int respostaCorreta) {
         int resposta;
         printf("\n%s\n", pergunta);
@@ -93,7 +93,7 @@ void jogoPerguntasRespostas() {
 
     // Função principal do jogo
     void jogar() {
-        // Perguntas e respostas
+        // Perguntas
         const char *perguntas[5] = {
             "Primeira Pergunta\n Qual o nome do primeiro robin?",
             "Segunda Pergunta\njuntos nos temos R$ 250 reais vc tem R$ 200  a mais que eu,quantos reais eu tenho?",
@@ -101,7 +101,7 @@ void jogoPerguntasRespostas() {
             "Quarta pergunta\nQual é o maior oceano do mundo?",
             "Quinta pergunta\nQual o maior orgão do corpo humano?"
         };
-
+         //respostas
         const char *opcoes[5][4] = {
             {"jason todd", "richard grayson", "bruce wellis", "tim drake"},
             {"R$25", "R$15", "R$50", "R$100"},
@@ -145,7 +145,7 @@ void jogoPerguntasRespostas() {
     } while (opcao != 2);
 }
 
-// Implementação do Cobra na Caixa
+// integração do Cobra na Caixa
 void jogoCobraNaCaixa() {
     system("cls || clear");
     printf("\n=== Cobra na Caixa ===\n\n");
@@ -153,12 +153,12 @@ void jogoCobraNaCaixa() {
     #define NUM_CAIXAS 5
     #define NUM_NOMES 7
 
-    // Constantes para o estado da caixa
+    // Constantes para oque tem na caixa
     #define VAZIA 0
     #define COBRA 1
     #define BOTAO 2
 
-    // Nomes predefinidos para os jogadores
+    // Nomes para os jogadores escolherem(gosto muito da franquia uncharted)
     const char *nomes[NUM_NOMES] = {
         "Indiana jones", "Lara croft", "Nathan", "sherlock", "Drake", "Sully", "Riley"
     };
@@ -197,11 +197,11 @@ void jogoCobraNaCaixa() {
             caixas[i] = VAZIA;
         }
         
-        // Sorteia posição do botão
+        // Sorteia o botão
         int botaoPos = rand() % NUM_CAIXAS;
         caixas[botaoPos] = BOTAO;
         
-        // Sorteia posição da cobra (diferente do botão)
+        // Sorteia a cobra (diferente do botão)
         int cobraPos;
         do {
             cobraPos = rand() % NUM_CAIXAS;
@@ -257,7 +257,7 @@ void jogoCobraNaCaixa() {
                     continue;
                 }
                 
-                // Verifica o conteúdo da caixa
+                // Verifica oq tem na caixa
                 switch(caixas[escolha-1]) {
                     case VAZIA:
                         printf("A caixa %d esta vazia. Proximo jogador!\n", escolha);
@@ -315,7 +315,7 @@ void jogoCobraNaCaixa() {
     } while (opcao != 2);
 }
 
-// Implementação do Gousmas War
+// integração do Gousmas War
 void jogoGousmasWar() {
     system("cls || clear");
     printf("\n=== Gousmas War ===\n\n");
@@ -413,7 +413,7 @@ void jogoGousmasWar() {
             return;
         }
         
-        // Transferir fúria
+        // Transferencia da  fúria
         jogadores[jAlvo].gousmas[gAlvo].furia += jogadores[jogadorAtual].gousmas[gAtacante].furia;
         jogadores[jogadorAtual].gousmas[gAtacante].ativa = false;
         
@@ -470,7 +470,7 @@ void jogoGousmasWar() {
             while (getchar() != '\n');
         }
         
-        // Realizar a divisão
+        // Realiza a divisão
         jogadores[jogadorAtual].gousmas[gOrigem].furia -= furiaTransferida;
         jogadores[jogadorAtual].gousmas[gDestino].furia = furiaTransferida;
         jogadores[jogadorAtual].gousmas[gDestino].ativa = true;
@@ -518,7 +518,7 @@ void jogoGousmasWar() {
     
     do {
         inicializarJogo();
-        jogadorAtual = 0; // Resetar jogador inicial
+        jogadorAtual = 0; // Reseta o jogador inicial
         jogar();
         
         printf("\n1 - Jogar novamente\n");
