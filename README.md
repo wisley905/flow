@@ -55,5 +55,18 @@ Ataque ou divida suas criaturas estrategicamente
 
 Elimine as Gousmas do oponente para vencer
 
+#Criadores
+-----------------------------------
+Wisley Gabriel de Oliveira e Silva.
+-----------------------------------
+Gabriel Texeira.
+-----------------------------------
+#Fontes
+--------------------------------------------------
+W3Schools: usamos para ver o melhor jeito de fazer os jogos.
+--------------------------------------------------
+Deepseek: usamos para entender oque exatamente precisavamos fazer em cada jogo e pedimos auxilio quando o codigo dava erro. 
+--------------------------------------------------
+
 
 
