@@ -65,7 +65,7 @@ Gabriel Texeira.
 --------------------------------------------------
 W3Schools: usamos para ver o melhor jeito de fazer os jogos.
 --------------------------------------------------
-Deepseek: usamos para entender oque exatamente precisavamos fazer em cada jogo e pedimos auxilio quando o codigo dava erro. 
+Deepseek: usamos para entender oque exatamente precisavamos fazer em cada jogo para depois estudar
 --------------------------------------------------
 
 
