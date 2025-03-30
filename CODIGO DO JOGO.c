@@ -6,14 +6,16 @@
 #include <ctype.h>
 
 // funções dos jogos
-void jogoPerguntasRespostas();
-void jogoCobraNaCaixa();
-void jogoGousmasWar();
+void jogoPerguntasRespostas();// Implementa o jogo de perguntas e respostas, onde o jogador escolhe a resposta correta para uma série de perguntas e pontua com base nas respostas
+void jogoCobraNaCaixa();//Implementa o jogo da "Cobra na Caixa", onde dois jogadores escolhem caixas e enfrentam desafios para evitar a cobra e encontrar o botão.
+
+
+void jogoGousmasWar();//Um jogo de estratégia onde dois jogadores controlam criaturas chamadas "Gousmas", que possuem "fúria" e podem atacar ou dividir sua fúria com outra Gousma.
 
 // Função do menu principal
-int exibirMenuPrincipal() {
+int exibirMenuPrincipal() { //Exibe o menu principal com opções para o usuário escolher qual jogo deseja jogar ou sair. Retorna a escolha do usuário.
     int escolha;
-    system("cls || clear");
+    system("cls || clear"); //função para limpar a tela
     printf("=================================\n");
     printf("       MENU DE JOGOS\n");
     printf("=================================\n");
@@ -28,10 +30,11 @@ int exibirMenuPrincipal() {
 }
 
 // Função principal
-int main() {
-    srand(time(NULL)); // ele meio que gera os numeros aleatorios
+int main() {// A função principal que chama o menu principal e, dependendo da escolha do jogador, chama a função de um dos jogos ou termina o programa.
     
-    int opcao;
+    srand(time(NULL)); // assegura que os números gerados sejam aleatórios baseados no tempo atual.
+    
+    int opcao; // cada caso se refere a uma escolha do usuario
     do {
         opcao = exibirMenuPrincipal();
         
@@ -92,11 +95,11 @@ void jogoPerguntasRespostas() {
     }
 
     // Função principal do jogo
-    void jogar() {
+    void jogar() {// usei array para armazenar as opções pq fica menor que o if
         // Perguntas
         const char *perguntas[5] = {
             "Primeira Pergunta\n Qual o nome do primeiro robin?",
-            "Segunda Pergunta\njuntos nos temos R$ 250 reais vc tem R$ 200  a mais que eu,quantos reais eu tenho?",
+            "Segunda Pergunta\njuntos nos temos R$ 250 reais vc tem R$ 200  a mais que eu,quantos reais eu tenho?",   
             "Terceira Pergunta\nQual palavra mais se repete na Biblia?",
             "Quarta pergunta\nQual é o maior oceano do mundo?",
             "Quinta pergunta\nQual o maior orgão do corpo humano?"
@@ -116,7 +119,7 @@ void jogoPerguntasRespostas() {
 
         // Loop para cada pergunta
         for (int i = 0; i < 5; i++) {
-            int resposta = fazerPergunta(perguntas[i], opcoes[i], respostasCorretas[i]);
+            int resposta = fazerPergunta(perguntas[i], opcoes[i], respostasCorretas[i]);//Exibe uma pergunta e suas opções de resposta. Retorna a resposta escolhida pelo jogador.
 
             if (resposta == respostasCorretas[i]) {
                 printf("Resposta correta!\n");
@@ -131,7 +134,7 @@ void jogoPerguntasRespostas() {
 
     int opcao;
     do {
-        opcao = menu();
+        opcao = menu();//Apresenta um menu interno com opções para jogar ou sair.
         switch (opcao) {
             case 1:
                 jogar();
@@ -164,13 +167,13 @@ void jogoCobraNaCaixa() {
     };
 
     // Função para limpar o buffer de entrada
-    void limparBuffer() {
+    void limparBuffer() {//Limpa o buffer de entrada, o que é útil para evitar a leitura incorreta de entradas no console.
         int c;
         while ((c = getchar()) != '\n' && c != EOF);
     }
 
     // Função para exibir o menu principal
-    int exibirMenu() {
+    int exibirMenu() {//Exibe o menu para iniciar o jogo ou sair.
         int opcao;
         system("cls || clear");
         printf("=================================\n");
@@ -186,12 +189,12 @@ void jogoCobraNaCaixa() {
     }
 
     // Função para sortear quem começa
-    int sortearJogador() {
+    int sortearJogador() {//Sorteia aleatoriamente quem começa o jogo entre os dois jogadores.
         return rand() % 2; // 0 ou 1
     }
 
     // Função para inicializar as caixas
-    void inicializarCaixas(int caixas[NUM_CAIXAS]) {
+    void inicializarCaixas(int caixas[NUM_CAIXAS]) {//Inicializa as caixas, sorteando uma caixa vazia, uma com a cobra e uma com o botão.
         // Inicializa todas como vazias
         for (int i = 0; i < NUM_CAIXAS; i++) {
             caixas[i] = VAZIA;
@@ -211,7 +214,7 @@ void jogoCobraNaCaixa() {
     }
 
     // Função principal do jogo
-    void jogar() {
+    void jogar() {//A função principal do jogo "Cobra na Caixa", onde os jogadores escolhem caixas e enfrentam os desafios até que alguém ganhe.
         int caixas[NUM_CAIXAS];
         char jogador1[20], jogador2[20];
         int vez, escolha, resultado;
@@ -221,12 +224,12 @@ void jogoCobraNaCaixa() {
         for (int i = 0; i < NUM_NOMES; i++) {
             printf("%d. %s\n", i+1, nomes[i]);
         }
-        printf("Escolha: ");
+        printf("Escolha: ");// escolha do nome do J1
         scanf("%d", &escolha);
         limparBuffer();
         strcpy(jogador1, nomes[escolha-1]);
         
-        printf("\nJogador 2, escolha seu nome (1-%d):\n", NUM_NOMES);
+        printf("\nJogador 2, escolha seu nome (1-%d):\n", NUM_NOMES);// escolha do nome J2
         for (int i = 0; i < NUM_NOMES; i++) {
             printf("%d. %s\n", i+1, nomes[i]);
         }
@@ -332,7 +335,7 @@ void jogoGousmasWar() {
     Jogador jogadores[2];
     int jogadorAtual = 0;
 
-    void inicializarJogo() {
+    void inicializarJogo() {//Inicializa o estado inicial do jogo, atribuindo fúria a todas as Gousmas.
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {
                 jogadores[i].gousmas[j].furia = 1;
@@ -341,7 +344,7 @@ void jogoGousmasWar() {
         }
     }
 
-    void mostrarEstado() {
+    void mostrarEstado() {//Exibe o estado atual do jogo, mostrando a fúria das Gousmas ativas de cada jogador.
         printf("\n--- Estado do Jogo ---\n");
         for (int j = 0; j < 2; j++) {
             printf("Jogador %d:\n", j + 1);
@@ -356,7 +359,7 @@ void jogoGousmasWar() {
         printf("----------------------\n");
     }
 
-    bool verificarFimDeJogo() {
+    bool verificarFimDeJogo() {//Verifica se algum jogador perdeu todas as suas Gousmas ativas e, se isso acontecer, termina o jogo.
         for (int j = 0; j < 2; j++) {
             bool perdeu = true;
             for (int g = 0; g < 2; g++) {
@@ -374,7 +377,7 @@ void jogoGousmasWar() {
         return false;
     }
 
-    void atacar() {
+    void atacar() {//Permite que o jogador escolha uma Gousma para atacar outra Gousma de um jogador adversário, transferindo fúria entre elas.
         int gAtacante, jAlvo, gAlvo;
         
         printf("\nEscolha sua Gousma atacante (1 ou 2): ");
@@ -427,7 +430,7 @@ void jogoGousmasWar() {
         }
     }
 
-    void dividir() {
+    void dividir() {//Permite que o jogador divida a fúria de uma Gousma ativa para criar uma nova Gousma
         int gOrigem, furiaTransferida;
         
         printf("\nEscolha a Gousma de origem (1 ou 2): ");
@@ -478,7 +481,7 @@ void jogoGousmasWar() {
         printf("Fúria dividida com sucesso! Nova Gousma criada com fúria %d.\n", furiaTransferida);
     }
 
-    void jogar() {
+    void jogar() {//A função principal do jogo Gousmas War, onde os jogadores alternam entre atacar ou dividir suas Gousmas até que um vença.
         bool jogoAtivo = true;
         
         while (jogoAtivo) {
