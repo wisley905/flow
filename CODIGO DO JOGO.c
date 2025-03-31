@@ -1,9 +1,9 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <time.h>
-#include <string.h>
-#include <ctype.h>
+#include <stdio.h>//Para exibir perguntas e ler respostas
+#include <stdlib.h>//Para limpar a tela (system("cls")) e alocar memória
+#include <stdbool.h>// particularmente útil em jogos para gerenciar estados complexos e condições de forma clara e eficiente.
+#include <time.h>//Para gerar perguntas aleatórias
+#include <string.h>//Para manipular textos das perguntas/respostas
+#include <ctype.h>//Para validar entradas do usuário (por exemplo, aceitar apenas letras)
 
 // funções dos jogos
 void jogoPerguntasRespostas();// Implementa o jogo de perguntas e respostas, onde o jogador escolhe a resposta correta para uma série de perguntas e pontua com base nas respostas
@@ -67,7 +67,7 @@ int main() {// A função principal que chama o menu principal e, dependendo da 
 }
 
 // Jogo de Perguntas e Respostas
-void jogoPerguntasRespostas() {
+void jogoPerguntasRespostas() {// o void faz com que a função não retorne a valor nenhum quando ela for terminada
     system("cls || clear");
     printf("\n=== Jogo de Perguntas e Respostas ===\n\n");
     
@@ -169,7 +169,7 @@ void jogoCobraNaCaixa() {
     // Função para limpar o buffer de entrada
     void limparBuffer() {//Limpa o buffer de entrada, o que é útil para evitar a leitura incorreta de entradas no console.
         int c;
-        while ((c = getchar()) != '\n' && c != EOF);
+        while ((c = getchar()) != '\n' && c != EOF);//Quando você usa scanf() para ler números ou strings curtas, o \n ele fica no buffer e isso pode fazer que futuramente ele tenha problemas
     }
 
     // Função para exibir o menu principal
@@ -323,16 +323,16 @@ void jogoGousmasWar() {
     system("cls || clear");
     printf("\n=== Gousmas War ===\n\n");
     
-    typedef struct {
-        int furia;
-        bool ativa;
+    typedef struct {//Agrupa informações relacionadas (como dados de um jogador)
+        int furia;//vai servir para ver o nivel de furia na gousma
+        bool ativa;// diz que a gousma está em "campo"
     } Gousma;
 
     typedef struct {
-        Gousma gousmas[2];
+        Gousma gousmas[2];// cada jogador começa com 2 gousmas
     } Jogador;
 
-    Jogador jogadores[2];
+    Jogador jogadores[2];//dois jogadores
     int jogadorAtual = 0;
 
     void inicializarJogo() {//Inicializa o estado inicial do jogo, atribuindo fúria a todas as Gousmas.
