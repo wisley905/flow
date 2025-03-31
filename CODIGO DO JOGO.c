@@ -1,3 +1,11 @@
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
 #include <stdio.h>//Para exibir perguntas e ler respostas
 #include <stdlib.h>//Para limpar a tela (system("cls")) e alocar memória
 #include <stdbool.h>// particularmente útil em jogos para gerenciar estados complexos e condições de forma clara e eficiente.
@@ -352,7 +360,7 @@ void jogoGousmasWar() {
                 if (jogadores[j].gousmas[g].ativa) {
                     printf("  Gousma %d: Fúria %d\n", g + 1, jogadores[j].gousmas[g].furia);
                 } else {
-                    printf("  Gousma %d: Desintegrada\n", g + 1);
+                    printf("  Gousma %d: Fúria 0\n", g + 1);
                 }
             }
         }
@@ -388,7 +396,7 @@ void jogoGousmasWar() {
         gAtacante--;
         
         if (!jogadores[jogadorAtual].gousmas[gAtacante].ativa) {
-            printf("Esta Gousma está desintegrada!\n");
+            printf("Esta Gousma está zerada!\n");
             return;
         }
         
@@ -420,7 +428,7 @@ void jogoGousmasWar() {
         jogadores[jAlvo].gousmas[gAlvo].furia += jogadores[jogadorAtual].gousmas[gAtacante].furia;
         jogadores[jogadorAtual].gousmas[gAtacante].ativa = false;
         
-        printf("Gousma atacante transferiu toda sua fúria (%d) para a Gousma alvo e foi desintegrada!\n", 
+        printf("Gousma atacante transferiu toda sua fúria (%d) para a Gousma alvo e foi zerada!\n", 
                jogadores[jogadorAtual].gousmas[gAtacante].furia);
         
         // Verificar se a Gousma alvo deve se desintegrar
@@ -441,7 +449,7 @@ void jogoGousmasWar() {
         gOrigem--;
         
         if (!jogadores[jogadorAtual].gousmas[gOrigem].ativa) {
-            printf("Esta Gousma está desintegrada!\n");
+            printf("Esta Gousma está zerada!\n");
             return;
         }
         
